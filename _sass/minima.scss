@@ -11,8 +11,9 @@ $base-line-height: 1.5 !default;
 $spacing-unit:     30px !default;
 
 $text-color:       #111 !default;
-$background-color: #d9ebff !default;
+$background-color: rgba(217,235,255,.7);
 $brand-color:      #2a7ae2 !default;
+$background-image:   url("../../bkg.jpg");
 
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js"></script>
+</head>
+
+<body>
+  <script>
+let values = [];
+let i = 0;
+let j = 0;
+let sorting = true;
+let speed = 30; // frames per comparison
+
+function setup() {
+  createCanvas(800, 400);
+  
+  // Create random array
+  for (let k = 0; k < 100; k++) {
+    values[k] = random(height);
+  }
+  
+  frameRate(speed);
+}
+
+function draw() {
+  background(30);
+
+  // Draw array as bars
+  for (let k = 0; k < values.length; k++) {
+    
+    // Highlight current comparison
+    if (k === j || k === j + 1) {
+      fill(255, 100, 100); // red = comparing
+    } else if (k >= values.length - i) {
+      fill(100, 255, 100); // green = sorted
+    } else {
+      fill(200);
+    }
+
+    rect(k * width / values.length,
+         height - values[k],
+         width / values.length,
+         values[k]);
+  }
+
+  // Perform one step of Bubble Sort
+  if (sorting) {
+    if (j < values.length - i - 1) {
+      
+      if (values[j] > values[j + 1]) {
+        swap(values, j, j + 1);
+      }
+      
+      j++;
+      
+    } else {
+      
+      j = 0;
+      i++;
+      
+      if (i >= values.length) {
+        sorting = false;
+        print("Finished!");
+      }
+    }
+  }
+}
+
+// Swap function
+function swap(arr, a, b) {
+  let temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+}
+  </script>
+</body>
+
+</html>
+
